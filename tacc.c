@@ -273,7 +273,7 @@ int main(int argc, char **argv) {
 	}
 
 	/* open syslog before any TACACS+ calls */
-	openlog("tacc", LOG_CONS | LOG_PID, LOG_AUTHPRIV);
+	openlog("tacc", LOG_CONS | LOG_PID, LOG_LOCAL7);
 
 	if (do_authen)
 		authenticate(tac_server, tac_secret, user, pass, tty, remote_addr);
