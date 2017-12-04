@@ -471,6 +471,13 @@ int pam_sm_authenticate(pam_handle_t * pamh, int flags, int argc,
 
 				communicating = 0;
 				break;
+					
+                        case LIBTAC_STATUS_PROTOCOL_ERR:
+				if (ctrl & PAM_TAC_DEBUG)
+					syslog(LOG_DEBUG,
+							"tacacs status: LIBTAC_STATUS_PROTOCOL_ERR");					
+                                communicating = 0;
+                                break;					
 
 			default:
 				if (msg < 0) {
@@ -986,6 +993,13 @@ int pam_sm_chauthtok(pam_handle_t * pamh, int flags, int argc,
 
 				communicating = 0;
 				break;
+
+                        case LIBTAC_STATUS_PROTOCOL_ERR:
+				if (ctrl & PAM_TAC_DEBUG)
+					syslog(LOG_DEBUG,
+							"tacacs status: LIBTAC_STATUS_PROTOCOL_ERR");					
+                                communicating = 0;
+                                break;							
 
 			default:
 				if (msg < 0) {
